@@ -97,7 +97,7 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 .works-slider {
   height: 675px;
   padding: 0 20px;
-  margin: 100px 0 120px;
+  margin: 100px 0 170px;
 
     @media (max-width: 479px) {
       margin-bottom: 100px;
