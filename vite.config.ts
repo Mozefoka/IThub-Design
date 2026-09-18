@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import AutoImport from 'unplugin-auto-import/vite'
 
 export default defineConfig({
-  base: './',
+  base: '/IThub-Design/',
 
   css: {
     preprocessorOptions: {
