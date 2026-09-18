@@ -409,6 +409,7 @@ const selectTab = (id: string): void => {
   &__description {
     max-width: 360px;
     justify-self: center;
+    font-size: 12px;
     line-height: 1.6;
 
     @media (max-width: 639px) {
@@ -433,7 +434,7 @@ const selectTab = (id: string): void => {
   }
 
   &__benefit {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.6;
   }
 

@@ -198,8 +198,8 @@ const headlineStyle = (index: number) => {
   --zoom-height: 1.6;
   --zoom: min(var(--zoom-width), var(--zoom-height));
 
-  --card-top: 150px;
-  --fade-window: 360px;
+  --card-top: 190px;
+  --fade-window: 300px;
 
   position: relative;
   height: calc(100vh + var(--pin-length));

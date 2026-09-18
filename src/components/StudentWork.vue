@@ -180,6 +180,7 @@ const works: StudentWorkItem[] = [
 
   &__description {
     max-width: 360px;
+    font-size: 12px;
     line-height: 1.6;
 
     @media (max-width: 959px) {
@@ -192,7 +193,7 @@ const works: StudentWorkItem[] = [
   }
 
   &__gallery {
-    height: 300px;
+    max-height: 300px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -234,7 +235,7 @@ const works: StudentWorkItem[] = [
         grid-area: ps;
         align-self: end;
         line-height: 1.5;
-        font-size: 14px;
+        font-size: 12px;
 
         @media (max-width: 1299px) {
           line-height: 1.2;
