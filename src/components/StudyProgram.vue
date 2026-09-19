@@ -284,6 +284,8 @@ const props = defineProps<Props>()
   &__button {
     grid-area: button;
     align-self: flex-end;
+    max-width: 150px !important;
+    font-size: 11px;
   }
 }
 </style>

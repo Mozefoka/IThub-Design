@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import {computed, onBeforeUnmount, onMounted, reactive, ref} from 'vue'
 import ButtonCta from '@/components/ui/ButtonCta.vue'
-import { images, icons } from '@/data/images.ts'
+import {images, icons} from '@/data/images.ts'
 
 interface Manager {
   name: string
@@ -28,7 +28,8 @@ interface FormData {
   phone: string
   email: string
   contactMethod: string
-  consent: boolean
+  consultationConsent: boolean
+  personalDataConsent: boolean
 }
 
 interface SubmitPayload extends FormData {
@@ -150,7 +151,8 @@ const form = reactive<FormData>({
   phone: '',
   email: '',
   contactMethod: 'whatsapp',
-  consent: false,
+  consultationConsent: false,
+  personalDataConsent: false,
 })
 
 const country = reactive<Country>({
@@ -267,7 +269,7 @@ onBeforeUnmount(() => {
           </p>
 
           <div class="lead-form__manager">
-            <img class="lead-form__manager-avatar" :src="manager.avatar" :alt="manager.name" />
+            <img class="lead-form__manager-avatar" :src="manager.avatar" :alt="manager.name"/>
 
             <div class="lead-form__manager-info">
               <p class="lead-form__manager-name">
@@ -304,7 +306,7 @@ onBeforeUnmount(() => {
                 :aria-expanded="countryDropdownOpen"
                 @click="toggleCountry"
               >
-                <img :src="country.flag" class="lead-form__flag" alt="Флаг" />
+                <img :src="country.flag" class="lead-form__flag" alt="Флаг"/>
 
                 <span
                   class="lead-form__chevron"
@@ -326,7 +328,7 @@ onBeforeUnmount(() => {
                   }"
                   @click="selectCountry(item)"
                 >
-                  <img :src="item.flag" class="lead-form__flag" alt="Флаг" />
+                  <img :src="item.flag" class="lead-form__flag" alt="Флаг"/>
 
                   <span class="lead-form__country-name">
                     {{ item.name }}
@@ -380,13 +382,37 @@ onBeforeUnmount(() => {
           </div>
 
           <label class="lead-form__consent">
-            <input v-model="form.consent" type="checkbox" required />
+            <input
+              v-model="form.consultationConsent"
+              type="checkbox"
+              required
+            />
 
             <span class="lead-form__consent-text">
-              Отправляя форму, я подтверждаю<a href="#" target="_blank" rel="noopener" @click.stop>
-                согласие </a
-              >на обработку персональных данных
-            </span>
+    Отправляя форму, я выражаю намерение на получение консультации по поступлению
+    и заключению договора об оказании образовательных услуг
+  </span>
+          </label>
+
+          <label class="lead-form__consent">
+            <input
+              v-model="form.personalDataConsent"
+              type="checkbox"
+              required
+            />
+
+            <span class="lead-form__consent-text">
+    Отправляя форму, я подтверждаю
+    <a
+      href="/privacy"
+      target="_blank"
+      rel="noopener noreferrer"
+      @click.stop
+    >
+      согласие
+    </a>
+    на обработку персональных данных
+  </span>
           </label>
 
           <div class="lead-form__submit">
@@ -405,7 +431,19 @@ onBeforeUnmount(() => {
 @use '@/styles/mixins' as *;
 
 .lead-form {
-  @include adaptive-zoom;
+  zoom: 1.3;
+
+  @media (max-width: 959px) {
+    zoom: 1.2;
+  }
+
+  @media (max-width: 639px) {
+    zoom: 1.3;
+  }
+
+  @media (max-width: 500px) {
+    zoom: 1.2;
+  }
 
   font-size: 12px;
   margin-bottom: $margin-bottom;
@@ -492,9 +530,8 @@ onBeforeUnmount(() => {
     border-radius: 30px;
     color: $color-white;
     background: $color-light-dark;
-    transition:
-      background 0.15s ease,
-      border-color 0.15s ease;
+    transition: background 0.15s ease,
+    border-color 0.15s ease;
 
     &::placeholder {
       color: $color-gray;
@@ -603,7 +640,7 @@ onBeforeUnmount(() => {
 
   &__contact-label {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 12px;
   }
 
   &__radio-group {
@@ -622,8 +659,8 @@ onBeforeUnmount(() => {
       appearance: none;
       display: grid;
       place-content: center;
-      width: 22px;
-      height: 22px;
+      width: 16px;
+      height: 15px;
       border: 2px solid $color-purple;
       border-radius: 50%;
       cursor: pointer;
@@ -632,8 +669,8 @@ onBeforeUnmount(() => {
 
       &::before {
         content: '';
-        width: 10px;
-        height: 10px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         background: $color-purple;
         transform: scale(0);
@@ -656,21 +693,20 @@ onBeforeUnmount(() => {
     align-items: flex-start;
     gap: 10px;
     cursor: pointer;
-    margin-bottom: 20px;
 
     input {
+      margin-top: 3px;
       appearance: none;
       display: grid;
       place-content: center;
       flex-shrink: 0;
-      width: 22px;
-      height: 22px;
+      width: 15px;
+      height: 15px;
       border: 2px solid $color-purple;
       opacity: 0.5;
       cursor: pointer;
-      transition:
-        border-color 0.15s ease,
-        background 0.15s ease;
+      transition: border-color 0.15s ease,
+      background 0.15s ease;
 
       &:checked {
         border-color: $color-purple;
@@ -678,8 +714,8 @@ onBeforeUnmount(() => {
 
         &::before {
           content: '';
-          width: 6px;
-          height: 10px;
+          width: 5px;
+          height: 8px;
           border-right: 2px solid $color-purple;
           border-bottom: 2px solid $color-purple;
           transform: rotate(45deg) translate(-1px, -1px);
