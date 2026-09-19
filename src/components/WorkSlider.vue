@@ -99,8 +99,8 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
   padding: 0 20px;
   margin: 100px 0 170px;
 
-    @media (max-width: 479px) {
-      margin-bottom: 100px;
+    @media (max-width: 959px) {
+      margin-bottom: 70px;
     }
 
   &__header {
@@ -223,6 +223,14 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 
     &.swiper-slide-active {
       height: 450px;
+
+        @media (max-width: 1199px) {
+          height: 380px;
+        }
+
+      @media (max-width: 959px) {
+        height: 350px;
+      }
     }
   }
 
@@ -230,6 +238,10 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+      @media (max-width: 959px) {
+        max-width: 640px;
+      }
   }
 }
 </style>

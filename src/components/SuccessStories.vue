@@ -282,15 +282,9 @@ const headlineStyle = (index: number) => {
     margin-bottom: 20px;
 
     &--size {
-      max-width: 330px;
       font-weight: 400;
       opacity: 1;
     }
-  }
-
-  &__stage-title {
-    max-width: 555px;
-    margin: 0 auto;
   }
 
   &__headlines {
@@ -304,12 +298,14 @@ const headlineStyle = (index: number) => {
   }
 
   &__headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     position: absolute;
     inset: auto 0 0;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 15px 10px;
-    text-align: center;
     will-change: opacity, transform;
   }
 
