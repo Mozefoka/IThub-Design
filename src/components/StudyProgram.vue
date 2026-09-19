@@ -209,17 +209,13 @@ const props = defineProps<Props>()
     position: relative;
     padding-left: 10px;
     font-size: 11px;
-    line-height: 20px;
+    line-height: 18px;
     color: $color-gray;
 
     &::before {
       content: '•';
       position: absolute;
       left: 0;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 5px;
     }
   }
 
