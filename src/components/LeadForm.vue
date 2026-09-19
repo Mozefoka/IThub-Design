@@ -518,7 +518,7 @@ onBeforeUnmount(() => {
     max-width: 500px;
     padding: 15px;
     border-radius: 15px;
-    background-color: $color-dark;
+    background-color: $color-black;
 
     @media (max-width: 1199px) {
       max-width: 100%;
