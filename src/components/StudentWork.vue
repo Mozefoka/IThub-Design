@@ -131,7 +131,7 @@ const works: StudentWorkItem[] = [
     position: sticky;
     top: 150px;
     padding-top: 10px;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
     border-top: 1px solid;
     background-color: $color-black;
 

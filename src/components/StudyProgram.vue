@@ -208,7 +208,7 @@ const props = defineProps<Props>()
   &__feature {
     position: relative;
     padding-left: 10px;
-    font-size: clamp(12px, 1vw, 14px);
+    font-size: 11px;
     line-height: 20px;
     color: $color-gray;
 

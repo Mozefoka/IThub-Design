@@ -407,6 +407,7 @@ onBeforeUnmount(() => {
 .lead-form {
   @include adaptive-zoom;
 
+  font-size: 12px;
   margin-bottom: $margin-bottom;
 
   &__grid {
@@ -477,7 +478,7 @@ onBeforeUnmount(() => {
     flex-direction: column;
     gap: 15px;
     max-width: 500px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
     background-color: $color-dark;
 
@@ -487,7 +488,7 @@ onBeforeUnmount(() => {
   }
 
   &__field {
-    padding: 15px;
+    padding: 10px;
     border-radius: 30px;
     color: $color-white;
     background: $color-light-dark;
@@ -505,7 +506,7 @@ onBeforeUnmount(() => {
   }
 
   &__select {
-    padding: 17px 15px;
+    padding: 10px;
     appearance: none;
     cursor: pointer;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1L7 7L13 1' stroke='%23a8a8ac' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
@@ -517,7 +518,7 @@ onBeforeUnmount(() => {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 13px 15px;
+    padding: 10px 15px;
     border-radius: 30px;
     background: $color-light-dark;
     transition: background 0.15s ease;
@@ -577,7 +578,6 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    font-size: clamp(12px, 1vw, 14px);
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.12s ease;
@@ -608,14 +608,13 @@ onBeforeUnmount(() => {
   &__radio-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
   }
 
   &__radio-option {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 16px;
     cursor: pointer;
 
     input {
