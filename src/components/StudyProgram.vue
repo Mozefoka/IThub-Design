@@ -270,7 +270,7 @@ const props = defineProps<Props>()
   &__tag {
     padding: 10px;
     margin: auto 0;
-    font-size: 14px;
+    font-size: 11px;
     background-color: $color-light-dark;
     border-radius: 20px;
     white-space: nowrap;
