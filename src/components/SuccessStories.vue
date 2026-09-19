@@ -264,6 +264,10 @@ const headlineStyle = (index: number) => {
         rgba(142, 66, 235, 0.25) 90%,
         transparent 100%
       );
+
+        @media (max-width: 639px) {
+          background: radial-gradient(ellipse 55% 25% at 50% 30%, rgba(155, 37, 237, 0.6) 20%, rgba(142, 66, 235, 0.25) 90%, transparent 100%);
+        }
     }
   }
 
