@@ -56,6 +56,7 @@ const works: StudentWorkItem[] = [
         v-for="work in works"
         :key="work.id"
         class="student-work__content"
+        :class="{'student-work__content--last': work.id === works.length - 1}"
         :style="{ zIndex: works.length + 1 }"
       >
         <div class="student-work__info">
@@ -120,6 +121,10 @@ const works: StudentWorkItem[] = [
     top: 50px;
     z-index: 4;
     margin: 0 0 30px;
+
+      @media (max-width: 959px) {
+        top: 75px;
+      }
   }
 
   &__content {
@@ -142,6 +147,12 @@ const works: StudentWorkItem[] = [
     @media (max-width: 959px) {
       grid-template-columns: 1fr;
     }
+
+    &--last {
+        @media (max-width: 959px) {
+          padding-bottom: 0;
+        }
+    }
   }
 
   &__info {
@@ -154,7 +165,7 @@ const works: StudentWorkItem[] = [
   &__heading-group {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
   }
 
   &__heading {

@@ -276,7 +276,7 @@ const selectTab = (id: string): void => {
 .teacher-cases {
   @include zoom;
 
-  margin-bottom: $margin-bottom;
+  margin-bottom: 80px;
   padding: 0 20px;
 
   &__title {

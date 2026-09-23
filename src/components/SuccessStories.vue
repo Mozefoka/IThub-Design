@@ -34,9 +34,13 @@ const TITLE_OUT = 300
 const TITLE_SHIFT = 75
 const TITLE_DRIFT = 80
 const WHEEL_RADIUS = 1000
+
 const lastIndex = props.cards.length - 1
 const pinLength = lastIndex * TRAVEL + Math.max(lastIndex - 1, 0) * HOLD + TAIL
-const uprightAt = (index: number) => index * TRAVEL + Math.max(index - 1, 0) * HOLD
+
+const uprightAt = (index: number) =>
+  index * TRAVEL + Math.max(index - 1, 0) * HOLD
+
 const root = ref<HTMLElement | null>(null)
 const scrolled = ref(0)
 
@@ -48,7 +52,10 @@ const measure = () => {
   const element = root.value
   if (!element) return
 
-  scrolled.value = Math.min(Math.max(-element.getBoundingClientRect().top, 0), pinLength)
+  scrolled.value = Math.min(
+    Math.max(-element.getBoundingClientRect().top, 0),
+    pinLength,
+  )
 }
 
 const onScroll = () => {
@@ -58,12 +65,14 @@ const onScroll = () => {
 
 onMounted(() => {
   measure()
+
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onScroll, { passive: true })
 })
 
 onBeforeUnmount(() => {
   if (frame) cancelAnimationFrame(frame)
+
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onScroll)
 })
@@ -79,15 +88,22 @@ const rotation = computed(() => {
     left -= travelled
 
     if (left <= 0) break
+
     left -= Math.min(left, HOLD)
+
     if (left <= 0) break
   }
 
   return degrees
 })
 
-const wheelStyle = computed(() => ({ transform: `rotate(${rotation.value}deg)` }))
-const spokeStyle = (index: number) => ({ transform: `rotate(${index * STEP_DEG}deg)` })
+const wheelStyle = computed(() => ({
+  transform: `rotate(${rotation.value}deg)`,
+}))
+
+const spokeStyle = (index: number) => ({
+  transform: `rotate(${index * STEP_DEG}deg)`,
+})
 
 const headlineStyle = (index: number) => {
   const progress = scrolled.value
@@ -100,18 +116,26 @@ const headlineStyle = (index: number) => {
     opacity = 0
   } else if (progress < at) {
     const t = (progress - (at - TITLE_IN)) / TITLE_IN
+
     opacity = t
     shift = TITLE_SHIFT * (1 - t)
   } else if (progress < at + TITLE_HOLD || index === lastIndex) {
     opacity = 1
     shift = 0
   } else {
-    const t = Math.min((progress - at - TITLE_HOLD) / TITLE_OUT, 1)
+    const t = Math.min(
+      (progress - at - TITLE_HOLD) / TITLE_OUT,
+      1,
+    )
+
     opacity = 1 - t
     shift = -TITLE_DRIFT * t
   }
 
-  return { opacity, transform: `translateY(${shift}px)` }
+  return {
+    opacity,
+    transform: `translateY(${shift}px)`,
+  }
 }
 </script>
 
@@ -119,10 +143,21 @@ const headlineStyle = (index: number) => {
   <section
     ref="root"
     class="success-stories"
-    :style="{ '--pin-length': `${pinLength}px`, '--wheel-radius': `${WHEEL_RADIUS}px` }"
+    :style="{
+      '--pin-length': `${pinLength}px`,
+      '--wheel-radius': `${WHEEL_RADIUS}px`,
+    }"
   >
-    <div class="success-stories__stage" :class="{ 'success-stories__stage--bg': props.active }">
-      <div class="success-stories__headlines" aria-hidden="true">
+    <div
+      class="success-stories__stage"
+      :class="{
+        'success-stories__stage--bg': props.active,
+      }"
+    >
+      <div
+        class="success-stories__headlines"
+        aria-hidden="true"
+      >
         <div
           v-for="(story, index) in props.cards"
           :key="story.id"
@@ -132,19 +167,30 @@ const headlineStyle = (index: number) => {
           <h2
             v-if="index === 0"
             class="success-stories__title"
-            :class="{ 'success-stories__title--size': props.active }"
+            :class="{
+              'success-stories__title--size': props.active,
+            }"
           >
             {{ props.title }}
           </h2>
+
           <h3 class="success-stories__stage-title title-md">
             {{ story.cardTitle }}
           </h3>
         </div>
       </div>
 
-      <img v-if="props.star" class="success-stories__star" :src="props.star" alt="Звезда" />
+      <img
+        v-if="props.star"
+        class="success-stories__star"
+        :src="props.star"
+        alt="Звезда"
+      />
 
-      <div class="success-stories__wheel" :style="wheelStyle">
+      <div
+        class="success-stories__wheel"
+        :style="wheelStyle"
+      >
         <div
           v-for="(story, index) in props.cards"
           :key="story.id"
@@ -153,12 +199,17 @@ const headlineStyle = (index: number) => {
         >
           <article class="success-stories__card">
             <div class="success-stories__card-photo">
-              <img :src="story.photo" alt="Студент" />
+              <img
+                :src="story.photo"
+                alt="Студент"
+              />
             </div>
 
             <div
               class="success-stories__card-panel"
-              :class="{ 'success-stories__card-panel--change': props.active }"
+              :class="{
+                'success-stories__card-panel--change': props.active,
+              }"
             >
               <p class="success-stories__card-panel-name">
                 {{ story.studentName }}
@@ -169,13 +220,20 @@ const headlineStyle = (index: number) => {
               </p>
 
               <div class="success-stories__card-panel-badge">
-                <BaseBadge v-if="story.badgeText" :img="story.badgeIcon" :border="'secondary'">
+                <BaseBadge
+                  v-if="story.badgeText"
+                  :img="story.badgeIcon"
+                  :border="'secondary'"
+                >
                   {{ story.badgeText }}
                 </BaseBadge>
               </div>
 
               <div class="success-stories__card-panel-description">
-                <p v-for="(paragraph, i) in story.description" :key="i">
+                <p
+                  v-for="(paragraph, i) in story.description"
+                  :key="i"
+                >
                   {{ paragraph }}
                 </p>
               </div>
@@ -202,7 +260,15 @@ const headlineStyle = (index: number) => {
   --fade-window: 300px;
 
   position: relative;
+
+  /* Fallback для браузеров без svh */
   height: calc(100vh + var(--pin-length));
+
+  /* Стабильный viewport для мобильного Safari */
+  @supports (height: 100svh) {
+    height: calc(100svh + var(--pin-length));
+  }
+
   margin-bottom: $margin-bottom;
 
   @media (max-width: 1150px) {
@@ -246,10 +312,20 @@ const headlineStyle = (index: number) => {
 
   &__stage {
     zoom: var(--zoom);
+
     position: sticky;
     top: 0;
+
+    /* Fallback */
     height: calc(100vh / var(--zoom));
+
+    /* Стабильная высота на мобильном Safari */
+    @supports (height: 100svh) {
+      height: calc(100svh / var(--zoom));
+    }
+
     overflow: hidden;
+
     background: radial-gradient(
       ellipse 100% 50% at 50% 50%,
       rgba(142, 66, 235, 0.6) 0%,
@@ -265,19 +341,27 @@ const headlineStyle = (index: number) => {
         transparent 100%
       );
 
-        @media (max-width: 639px) {
-          background: radial-gradient(ellipse 55% 25% at 50% 30%, rgba(155, 37, 237, 0.6) 20%, rgba(142, 66, 235, 0.25) 90%, transparent 100%);
-        }
+      @media (max-width: 639px) {
+        background: radial-gradient(
+          ellipse 55% 25% at 50% 30%,
+          rgba(155, 37, 237, 0.6) 20%,
+          rgba(142, 66, 235, 0.25) 90%,
+          transparent 100%
+        );
+      }
     }
   }
 
   &__title {
     position: relative;
     z-index: 3;
+
     font-weight: 700;
     font-size: clamp(14px, 1.5vw, 18px);
     line-height: clamp(16px, 2vw, 20px);
+
     opacity: 0.3;
+
     padding-top: 20px;
     margin-bottom: 20px;
 
@@ -292,54 +376,74 @@ const headlineStyle = (index: number) => {
     top: 0;
     left: 0;
     z-index: 3;
+
     width: 100%;
     height: var(--card-top);
+
     pointer-events: none;
   }
 
   &__headline {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+
     position: absolute;
     inset: auto 0 0;
+
     max-width: 600px;
+
     margin: 0 auto;
     padding: 0 15px 10px;
+
+    text-align: center;
+
     will-change: opacity, transform;
   }
 
   &__wheel {
     position: absolute;
+
     top: calc(var(--card-top) + var(--wheel-radius));
     left: 50%;
+
     width: calc(var(--wheel-radius) * 2);
     height: calc(var(--wheel-radius) * 2);
+
     margin-top: calc(var(--wheel-radius) * -1);
     margin-left: calc(var(--wheel-radius) * -1);
+
     will-change: transform;
   }
 
   &__star {
     position: absolute;
+
     top: calc(var(--card-top) + 210px);
     left: 50%;
+
     width: 632px;
     height: 215px;
+
     transform: translate(-50%, -50%);
   }
 
   &__fade {
     position: absolute;
+
     top: 0;
     bottom: 0;
+
     z-index: 2;
+
     width: max(0px, (100% - var(--fade-window)) / 2);
+
     pointer-events: none;
   }
 
   &__fade--left {
     left: 0;
+
     background: linear-gradient(
       to right,
       $color-black 45%,
@@ -354,6 +458,7 @@ const headlineStyle = (index: number) => {
 
   &__fade--right {
     right: 0;
+
     background: linear-gradient(
       to left,
       $color-black 45%,
@@ -374,19 +479,25 @@ const headlineStyle = (index: number) => {
   &__card {
     position: absolute;
     z-index: 1;
+
     top: 0;
     left: 50%;
+
     width: 460px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     transform: translateX(-50%);
   }
 
   &__card-title {
     position: absolute;
+
     width: 1px;
     height: 1px;
+
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
@@ -400,6 +511,7 @@ const headlineStyle = (index: number) => {
     img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
       object-position: center top;
     }
@@ -407,15 +519,22 @@ const headlineStyle = (index: number) => {
 
   &__card-panel {
     max-width: 400px;
+
     position: relative;
     top: -80px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     gap: 10px;
+
     padding: 20px;
+
     border-radius: 15px;
+
     background-color: $color-dark;
+
     text-align: center;
 
     @media (max-width: 500px) {
@@ -424,11 +543,16 @@ const headlineStyle = (index: number) => {
 
     &--change {
       max-width: 600px;
+
       align-items: flex-start;
+
       border-top: 1px solid;
+
       background-color: $color-black;
       border-radius: 0;
+
       text-align: left;
+
       padding: 20px 0 0 0;
 
       @media (max-width: 729px) {
@@ -444,16 +568,22 @@ const headlineStyle = (index: number) => {
 
   &__card-panel-course {
     font-size: clamp(12px, 1vw, 14px);
+
     color: $color-gray;
+
     margin-bottom: 20px;
   }
 
   &__card-panel-badge {
     max-width: 180px;
+
     position: absolute;
+
     top: -40px;
     right: -65px;
+
     transform: rotate(15deg);
+
     z-index: 2;
 
     @media (max-width: 500px) {
@@ -464,7 +594,9 @@ const headlineStyle = (index: number) => {
   &__card-panel-description {
     display: flex;
     flex-direction: column;
+
     gap: 20px;
+
     font-size: clamp(12px, 1vw, 14px);
     line-height: 1.15;
   }
@@ -477,7 +609,9 @@ const headlineStyle = (index: number) => {
     &__stage {
       position: static;
       height: auto;
+
       padding-bottom: 60px;
+
       overflow: visible;
     }
 
@@ -489,13 +623,18 @@ const headlineStyle = (index: number) => {
 
     &__wheel {
       position: static;
+
       display: flex;
       flex-direction: column;
       align-items: center;
+
       gap: 60px;
+
       width: auto;
       height: auto;
+
       margin: 40px 0 0;
+
       transform: none !important;
     }
 
@@ -506,20 +645,27 @@ const headlineStyle = (index: number) => {
 
     &__card {
       position: static;
+
       width: 100%;
       max-width: 460px;
+
       transform: none;
     }
 
     &__card-title {
       position: static;
+
       width: auto;
       height: auto;
+
       overflow: visible;
       clip-path: none;
       white-space: normal;
+
       max-width: 340px;
+
       margin-bottom: 20px;
+
       text-align: center;
     }
   }
