@@ -14,7 +14,7 @@ import BaseFaq from '@/components/BaseFaq.vue'
   <SuccessStories :cards="designSuccessStories" :active=true />
   <TeacherCases />
   <StudentWork title="Вы только посмотрите на проекты наших ребят" />
-  <StudyProgram :cases="designCases" zoom="zoom" container="wide" :black="true" />
+  <StudyProgram :cases="designCases" container="wide" />
   <LeadForm title="Готов к карьере в дизайне?" />
   <BaseFaq />
 </template>
