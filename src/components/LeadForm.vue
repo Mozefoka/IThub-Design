@@ -468,6 +468,7 @@ onBeforeUnmount(() => {
   }
 
   &__title {
+    max-width: 330px;
     margin-bottom: 20px;
 
     @media (max-width: 1199px) {
