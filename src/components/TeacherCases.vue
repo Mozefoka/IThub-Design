@@ -38,7 +38,7 @@ const tabs: TeacherCaseTab[] = [
     id: 'design-studio',
     layout: 'case-study',
     navLabel: 'Проектная работа с дизайн-студией',
-    heading: 'Проектная работа с дизайн-студией',
+    heading: 'Проектная работа\nс дизайн-студией',
     teacherLabel: 'Преподаватель:',
     teacherName: 'Дарья Савина',
     description:
@@ -62,7 +62,7 @@ const tabs: TeacherCaseTab[] = [
     id: 'hackathon',
     layout: 'case-study',
     navLabel: 'Хакатон на «Колледж Фест»',
-    heading: 'Хакатон на «Колледж Фест»',
+    heading: 'Хакатон на\n«Колледж Фест»',
     teacherLabel: 'Преподаватель:',
     teacherName: 'Дарья Савина',
     description:
@@ -113,7 +113,7 @@ const tabs: TeacherCaseTab[] = [
     heading: 'Креатон с сообществом «Розетка»',
     description:
       'Целая неделя работы в режиме настоящего креативного агентства. На креатоне студенты получили реальный бриф от сообщества «Розетка» и разработали для них фирменный стиль. Команды подбирали шрифты, собирали палитры, верстали носители, а в финале защищали свои концепции перед экспертным жюри и самим заказчиком',
-    benefitsHeading: 'В чём польза для студентов?',
+    benefitsHeading: 'В чём польза для\nстудентов?',
     benefits: [
       'Опыт работы по правилам дизайн-агентства: реальный заказчик, сжатые сроки и защита презентации',
       'Шанс выпустить реальный продукт: дизайн команды победителей пошел в производство фирменного мерча',
@@ -151,7 +151,7 @@ const selectTab = (id: string): void => {
 <template>
   <section class="teacher-cases">
     <div class="teacher-cases__inner">
-      <h2 class="teacher-cases__title title-md">Подход наших преподавателей</h2>
+      <h2 class="teacher-cases__title">Подход наших преподавателей</h2>
 
       <div class="teacher-cases__tabs" role="tablist" aria-label="Подход наших преподавателей">
         <button
@@ -280,7 +280,10 @@ const selectTab = (id: string): void => {
   padding: 0 20px;
 
   &__title {
-    max-width: 400px;
+    max-width: 0;
+    font-weight: 600;
+    font-size: clamp(25px, 2vw, 35px);
+    line-height: clamp(25px, 2vw, 35px);
     margin: 0 0 30px;
   }
 
@@ -306,16 +309,22 @@ const selectTab = (id: string): void => {
   }
 
   &__tab {
+    font-size: clamp(10px, 1vw, 14px);
     background: transparent;
     appearance: none;
     color: $color-gray;
     text-align: center;
     cursor: pointer;
+    white-space: nowrap;
     transition: color 0.2s ease;
 
     &:hover {
       color: rgba($color-white, 0.8);
     }
+
+      @media (max-width: 1599px) {
+        font-size: 11px;
+      }
 
     &--active {
       color: $color-white;
@@ -335,12 +344,19 @@ const selectTab = (id: string): void => {
   &__content {
     display: grid;
     align-items: center;
-    gap: 40px;
+    gap: 110px;
     margin-bottom: 30px;
 
+      @media (max-width: 1429px) {
+        gap: 80px;
+      }
+
+    @media (max-width: 659px) {
+      gap: 15px;
+    }
+
     &--case-study {
-      grid-template-columns: minmax(0, 280px) 1fr;
-      justify-content: space-between;
+      grid-template-columns: minmax(0, 280px) 360px;
 
       @media (max-width: 639px) {
         grid-template-columns: minmax(0, 200px) 1fr;
@@ -374,8 +390,9 @@ const selectTab = (id: string): void => {
 
   &__heading {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.3;
+    white-space: pre-line;
 
     @media (max-width: 639px) {
       font-size: 15px;
@@ -398,7 +415,7 @@ const selectTab = (id: string): void => {
   }
 
   &__teacher-name {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
 
     @media (max-width: 639px) {
@@ -407,8 +424,6 @@ const selectTab = (id: string): void => {
   }
 
   &__description {
-    max-width: 360px;
-    justify-self: center;
     font-size: 12px;
     line-height: 1.6;
 

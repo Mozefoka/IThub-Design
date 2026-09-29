@@ -25,7 +25,7 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 <template>
   <div class="works-slider">
     <div class="works-slider__header">
-      <h1 class="works-slider__title title-lg">{{ title }}</h1>
+      <h1 class="works-slider__title">{{ title }}</h1>
 
       <div class="works-slider__controls">
         <button ref="prevBtnEl" type="button" class="works-slider__arrow works-slider__arrow--prev">
@@ -120,7 +120,7 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 
     display: grid;
     grid-template-columns: 3fr 1fr 1fr;
-    align-items: center;
+    align-items: flex-end;
     gap: 15px;
     margin-bottom: 40px;
 
@@ -135,7 +135,7 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
   }
 
   &__header-btn {
-    max-width: 160px;
+    max-width: 140px;
     width: 100%;
     justify-self: flex-end;
 
@@ -152,6 +152,9 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 
   &__title {
     max-width: 480px;
+    font-weight: 600;
+    font-size: clamp(25px, 2vw, 35px);
+    line-height: clamp(25px, 2vw, 35px);
 
     @media (max-width: 639px) {
       max-width: 380px;

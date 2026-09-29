@@ -81,17 +81,17 @@ const contactMethods: ContactMethod[] = [
 
 const countries: Country[] = [
   {
-    code: 'PS',
-    name: 'Палестина',
-    dialCode: '+970',
-    flag: icons.psFlag,
-    mask: '(###) ###-##-##',
-  },
-  {
     code: 'RU',
     name: 'Россия',
     dialCode: '+7',
     flag: icons.ruFlag,
+    mask: '(###) ###-##-##',
+  },
+  {
+    code: 'PS',
+    name: 'Палестина',
+    dialCode: '+970',
+    flag: icons.psFlag,
     mask: '(###) ###-##-##',
   },
   {
@@ -261,7 +261,7 @@ onBeforeUnmount(() => {
     <div class="container">
       <div class="lead-form__grid">
         <div class="lead-form__content">
-          <h2 class="lead-form__title title-md">{{ props.title }}</h2>
+          <h2 class="lead-form__title">{{ props.title }}</h2>
 
           <p class="lead-form__description">
             Узнать больше об обучении в ITHub СПб, подать заявку и задать вопросы можно как онлайн,
@@ -468,7 +468,10 @@ onBeforeUnmount(() => {
   }
 
   &__title {
-    max-width: 330px;
+    font-weight: 700;
+    font-size: clamp(20px, 2vw, 29px);
+    line-height: clamp(25px, 2vw, 35px);
+    white-space: nowrap;
     margin-bottom: 20px;
 
     @media (max-width: 1199px) {
