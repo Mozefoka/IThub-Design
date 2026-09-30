@@ -124,7 +124,7 @@ const works: StudentWorkItem[] = [
     margin: 0 0 30px;
 
       @media (max-width: 959px) {
-        top: 75px;
+        top: 12px;
       }
   }
 
