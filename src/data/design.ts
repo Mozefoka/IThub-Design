@@ -72,7 +72,7 @@ export const designSuccessStories = [
 export const designCases = [
   {
     id: 1,
-    title: 'Интернет-маркетолог',
+    title: 'Графический дизайнер\nи дизайнер анимации',
     description:
       'Помогает бизнесу находить клиентов, увеличивать продажи и понимать, какие инструменты работают',
     features: [
@@ -94,7 +94,7 @@ export const designCases = [
 
   {
     id: 2,
-    title: 'SMM-специалист',
+    title: 'Веб и UX/UI дизанер',
     description:
       'Создаёт контент, который привлекает внимание, собирает сообщество и приносит бизнесу клиентов',
     features: [

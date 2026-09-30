@@ -152,7 +152,7 @@ const nextBtnEl = ref<HTMLButtonElement | null>(null)
 
   &__title {
     max-width: 480px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: clamp(25px, 2vw, 35px);
     line-height: clamp(25px, 2vw, 35px);
 

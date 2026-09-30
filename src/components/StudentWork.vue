@@ -116,10 +116,11 @@ const works: StudentWorkItem[] = [
   padding: 0 20px;
 
   &__title {
-    max-width: 485px;
     position: sticky;
-    top: 50px;
+    top: 0;
+    font-weight: 500;
     z-index: 4;
+    white-space: pre-wrap;
     margin: 0 0 30px;
 
       @media (max-width: 959px) {
@@ -134,11 +135,19 @@ const works: StudentWorkItem[] = [
     column-gap: 40px;
     row-gap: 40px;
     position: sticky;
-    top: 150px;
+    top: 170px;
     padding-top: 10px;
     padding-bottom: 120px;
     border-top: 1px solid;
     background-color: $color-black;
+
+      @media (max-width: 1699px) {
+        grid-template-columns: minmax(260px, 320px) 1fr;
+      }
+
+      @media (max-width: 1429px) {
+        top: 140px;
+      }
 
     @media (max-width: 1199px) {
       column-gap: 10px;
@@ -170,7 +179,7 @@ const works: StudentWorkItem[] = [
 
   &__heading {
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.3;
 
     @media (max-width: 639px) {
@@ -191,6 +200,7 @@ const works: StudentWorkItem[] = [
 
   &__description {
     max-width: 360px;
+    font-weight: 500;
     font-size: 12px;
     line-height: 1.6;
 
@@ -245,8 +255,9 @@ const works: StudentWorkItem[] = [
       .student-work__ps {
         grid-area: ps;
         align-self: end;
-        line-height: 1.5;
+        font-weight: 500;
         font-size: 12px;
+        line-height: 1.5;
 
         @media (max-width: 1299px) {
           line-height: 1.2;

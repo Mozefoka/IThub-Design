@@ -36,9 +36,9 @@ const props = defineProps<Props>()
 
     <div class="container" :class="`container--${props.container}`">
       <div class="study-program__intro">
-        <h2 class="study-program__title title-md">Следующий кейс может быть твоим!</h2>
+        <h2 class="study-program__title title-md">Следующий кейс <br> может быть твоим!</h2>
         <p class="study-program__subtitle">
-          Выбери направление в маркетинге и начни создавать своё портфолио ещё во время обучения
+          Выбери направление в маркетинге и начни создавать своё <br> портфолио ещё во время обучения
         </p>
       </div>
 
@@ -50,9 +50,9 @@ const props = defineProps<Props>()
       >
         <div class="profession-card__header">
           <h3 class="profession-card__title">{{ studyCase.title }}</h3>
-          <p class="profession-card__description">
-            {{ studyCase.description }}
-          </p>
+          <div class="profession-card__button profession-card__button--pc">
+            <ButtonCta>Поступить</ButtonCta>
+          </div>
         </div>
 
         <ul class="profession-card__features">
@@ -71,10 +71,6 @@ const props = defineProps<Props>()
           </span>
         </div>
 
-        <div class="profession-card__button">
-          <ButtonCta>Поступить</ButtonCta>
-        </div>
-
         <div class="profession-card__program">
           <h4 class="profession-card__program-title">Программа обучения</h4>
           <span class="profession-card__program-code">{{ studyCase.code }}</span>
@@ -89,6 +85,10 @@ const props = defineProps<Props>()
               <img :src="icons.linkArrow" alt="Стрелка" />
             </li>
           </ul>
+        </div>
+
+        <div class="profession-card__button profession-card__button--mobile">
+          <ButtonCta>Поступить</ButtonCta>
         </div>
       </article>
     </div>
@@ -114,8 +114,15 @@ const props = defineProps<Props>()
   }
 
   &__intro {
-    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 20px;
+
+      @media (max-width: 959px) {
+        grid-template-columns: 1fr;
+      }
   }
 
   &__title {
@@ -123,7 +130,9 @@ const props = defineProps<Props>()
   }
 
   &__subtitle {
-    font-size: clamp(12px, 1vw, 14px);
+    max-width: 550px;
+    font-weight: 500;
+    font-size: clamp(12px, 1vw, 17px);
     line-height: 1.5;
   }
 }
@@ -133,7 +142,7 @@ const props = defineProps<Props>()
   grid-template-columns: minmax(0, 190px) 1fr;
   grid-template-areas:
     'header features program'
-    'button tags tags';
+    'header tags tags';
   gap: 30px;
   padding: 20px;
   background-color: $color-dark;
@@ -146,7 +155,7 @@ const props = defineProps<Props>()
   @media (max-width: 1199px) {
     grid-template-areas:
       'header features'
-      'button features'
+      'header features'
       'program tags';
   }
 
@@ -156,7 +165,7 @@ const props = defineProps<Props>()
       'header'
       'features'
       'tags'
-      'program '
+      'program'
       'button';
   }
 
@@ -181,16 +190,18 @@ const props = defineProps<Props>()
   }
 
   &__header {
+    height: 200px;
     grid-column: 1;
     grid-row: 1;
     grid-area: header;
   }
 
   &__title {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: clamp(14px, 1.5vw, 18px);
     font-weight: 700;
     line-height: 20px;
+    white-space: pre-wrap;
   }
 
   &__description {
@@ -279,9 +290,31 @@ const props = defineProps<Props>()
 
   &__button {
     grid-area: button;
+    grid-row: 1;
     align-self: flex-end;
     max-width: 150px !important;
     font-size: 11px;
+
+    &--pc {
+
+        @media (max-width: 959px) {
+          display: none;
+        }
+    }
+
+    &--mobile {
+      display: none;
+      grid-area: button;
+      max-width: 100% !important;
+
+      @media (max-width: 959px) {
+        display: block;
+      }
+    }
+
+    button {
+      padding: 15px;
+    }
   }
 }
 </style>

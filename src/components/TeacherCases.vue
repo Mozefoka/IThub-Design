@@ -110,7 +110,7 @@ const tabs: TeacherCaseTab[] = [
     id: 'creaton',
     layout: 'benefits',
     navLabel: 'Креатон с сообществом «Розетка»',
-    heading: 'Креатон с сообществом «Розетка»',
+    heading: 'Креатон с сообществом\n«Розетка»',
     description:
       'Целая неделя работы в режиме настоящего креативного агентства. На креатоне студенты получили реальный бриф от сообщества «Розетка» и разработали для них фирменный стиль. Команды подбирали шрифты, собирали палитры, верстали носители, а в финале защищали свои концепции перед экспертным жюри и самим заказчиком',
     benefitsHeading: 'В чём польза для\nстудентов?',
@@ -281,7 +281,7 @@ const selectTab = (id: string): void => {
 
   &__title {
     max-width: 0;
-    font-weight: 600;
+    font-weight: 500;
     font-size: clamp(25px, 2vw, 35px);
     line-height: clamp(25px, 2vw, 35px);
     margin: 0 0 30px;
@@ -343,8 +343,7 @@ const selectTab = (id: string): void => {
 
   &__content {
     display: grid;
-    align-items: center;
-    gap: 110px;
+    gap: 30px;
     margin-bottom: 30px;
 
       @media (max-width: 1429px) {
@@ -356,21 +355,44 @@ const selectTab = (id: string): void => {
     }
 
     &--case-study {
-      grid-template-columns: minmax(0, 280px) 360px;
+      grid-template-columns: 1fr 360px 1fr;
+
+      .teacher-cases__info {
+        grid-column: 1;
+      }
+
+      .teacher-cases__description {
+        grid-column: 2;
+        justify-self: center;
+      }
 
       @media (max-width: 639px) {
         grid-template-columns: minmax(0, 200px) 1fr;
         gap: 10px;
+
+        .teacher-cases__description {
+          grid-column: 2;
+        }
       }
 
       @media (max-width: 479px) {
         grid-template-columns: 1fr;
+
+        .teacher-cases__description {
+          grid-column: 1;
+        }
       }
     }
 
     &--benefits {
       grid-template-columns: repeat(3, 1fr);
       align-items: flex-start;
+
+      .teacher-cases__info,
+      .teacher-cases__benefits {
+        display: grid;
+        gap: 20px;
+      }
 
       @media (max-width: 1199px) {
         grid-template-columns: 1fr 1fr;
@@ -390,7 +412,7 @@ const selectTab = (id: string): void => {
 
   &__heading {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
     white-space: pre-line;
 
@@ -415,7 +437,7 @@ const selectTab = (id: string): void => {
   }
 
   &__teacher-name {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
 
     @media (max-width: 639px) {
@@ -424,6 +446,7 @@ const selectTab = (id: string): void => {
   }
 
   &__description {
+    font-weight: 500;
     font-size: 12px;
     line-height: 1.6;
 
@@ -446,6 +469,7 @@ const selectTab = (id: string): void => {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    font-weight: 500;
   }
 
   &__benefit {

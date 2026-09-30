@@ -13,9 +13,9 @@ import BaseFaq from '@/components/BaseFaq.vue'
   <WorkSlider title="Твои работы будут говорить за тебя" :works="workItems" />
   <SuccessStories :cards="designSuccessStories" :active=true />
   <TeacherCases />
-  <StudentWork title="Вы только посмотрите на проекты наших ребят" />
-  <StudyProgram :cases="designCases" container="wide" />
-  <LeadForm title="Готов к карьере в дизайне?" />
+  <StudentWork :title="`Вы только\nпосмотрите\nна проекты\nнаших ребят`" />
+  <StudyProgram :cases="designCases" container="wide" black />
+  <LeadForm :title="`Готов к карьере\nв дизайне?`" />
   <BaseFaq />
 </template>
 
