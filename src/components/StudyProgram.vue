@@ -36,7 +36,7 @@ const props = defineProps<Props>()
 
     <div class="container" :class="`container--${props.container}`">
       <div class="study-program__intro">
-        <h2 class="study-program__title title-md">Следующий кейс <br> может быть твоим!</h2>
+        <h2 class="study-program__title">Следующий кейс <br> может быть твоим!</h2>
         <p class="study-program__subtitle">
           Выбери направление в маркетинге и начни создавать своё <br> портфолио ещё во время обучения
         </p>
@@ -126,13 +126,16 @@ const props = defineProps<Props>()
   }
 
   &__title {
+    font-weight: 500;
+    font-size: clamp(25px, 2vw, 29px);
+    line-height: clamp(25px, 2vw, 29px);
     margin-bottom: 15px;
   }
 
   &__subtitle {
     max-width: 550px;
     font-weight: 500;
-    font-size: clamp(12px, 1vw, 17px);
+    font-size: clamp(12px, 1vw, 15px);
     line-height: 1.5;
   }
 }
@@ -190,14 +193,13 @@ const props = defineProps<Props>()
   }
 
   &__header {
-    height: 200px;
     grid-column: 1;
     grid-row: 1;
     grid-area: header;
   }
 
   &__title {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: clamp(14px, 1.5vw, 18px);
     font-weight: 700;
     line-height: 20px;
@@ -292,7 +294,7 @@ const props = defineProps<Props>()
     grid-area: button;
     grid-row: 1;
     align-self: flex-end;
-    max-width: 150px !important;
+    max-width: 170px !important;
     font-size: 11px;
 
     &--pc {
@@ -314,6 +316,7 @@ const props = defineProps<Props>()
 
     button {
       padding: 15px;
+      font-weight: 500;
     }
   }
 }
