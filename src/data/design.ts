@@ -47,7 +47,7 @@ export const designSuccessStories = [
 
   {
     id: 2,
-    cardTitle: 'Стала призёром международного конкурса',
+    cardTitle: '3 место на Dprofile',
     photo: images.roman,
     studentName: 'Ксения Телийчук и Андрей Труфанов',
     studentCourse: 'Студентка ITHub СПБ, 2 курс',
