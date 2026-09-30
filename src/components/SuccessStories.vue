@@ -174,7 +174,7 @@ const headlineStyle = (index: number) => {
             {{ props.title }}
           </h2>
 
-          <h3 class="success-stories__stage-title title-md">
+          <h3 class="success-stories__stage-title title-lg">
             {{ story.cardTitle }}
           </h3>
         </div>
@@ -261,10 +261,8 @@ const headlineStyle = (index: number) => {
 
   position: relative;
 
-  /* Fallback для браузеров без svh */
   height: calc(100vh + var(--pin-length));
 
-  /* Стабильный viewport для мобильного Safari */
   @supports (height: 100svh) {
     height: calc(100svh + var(--pin-length));
   }
@@ -316,10 +314,8 @@ const headlineStyle = (index: number) => {
     position: sticky;
     top: 0;
 
-    /* Fallback */
     height: calc(100vh / var(--zoom));
 
-    /* Стабильная высота на мобильном Safari */
     @supports (height: 100svh) {
       height: calc(100svh / var(--zoom));
     }
@@ -391,12 +387,12 @@ const headlineStyle = (index: number) => {
     position: absolute;
     inset: auto 0 0;
 
-    max-width: 600px;
+    max-width: 800px;
 
     margin: 0 auto;
     padding: 0 15px 10px;
 
-    text-align: center;
+    white-space: pre-wrap;
 
     will-change: opacity, transform;
   }
@@ -500,7 +496,6 @@ const headlineStyle = (index: number) => {
 
     overflow: hidden;
     clip-path: inset(50%);
-    white-space: nowrap;
   }
 
   &__card-photo {

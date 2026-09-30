@@ -35,7 +35,7 @@ export const workItems = [
 export const designSuccessStories = [
   {
     id: 1,
-    cardTitle: 'Трудоустроился на 2 курсе',
+    cardTitle: 'Стажировка в РБК\nна 1 курсе',
     photo: images.roman,
     studentName: 'Доминика Шабардыгина',
     studentCourse: 'Студент ITHub СПБ, 2 курс',
@@ -58,7 +58,7 @@ export const designSuccessStories = [
 
   {
     id: 3,
-    cardTitle: 'Трудоустроился на 2 курсе',
+    cardTitle: 'Первый заказ уже\nво время учёбы',
     photo: images.roman,
     studentName: 'Богдан Цверкунов',
     studentCourse: 'Студент ITHub СПБ, 2 курс',
