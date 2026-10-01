@@ -146,7 +146,7 @@ const props = defineProps<Props>()
   grid-template-areas:
     'header features program'
     'header tags tags';
-  gap: 30px;
+  gap: 20px;
   padding: 20px;
   background-color: $color-dark;
   border-radius: 15px;
@@ -199,7 +199,6 @@ const props = defineProps<Props>()
   }
 
   &__title {
-    margin-bottom: 20px;
     font-size: clamp(14px, 1.5vw, 18px);
     font-weight: 700;
     line-height: 20px;
