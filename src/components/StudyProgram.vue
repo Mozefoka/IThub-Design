@@ -203,6 +203,7 @@ const props = defineProps<Props>()
     font-weight: 700;
     line-height: 20px;
     white-space: pre-wrap;
+    margin-bottom: 20px;
   }
 
   &__description {

@@ -282,8 +282,8 @@ const selectTab = (id: string): void => {
   &__title {
     max-width: 0;
     font-weight: 500;
-    font-size: clamp(25px, 2vw, 35px);
-    line-height: clamp(25px, 2vw, 35px);
+    font-size: 35px;
+    line-height: 35px;
     margin: 0 0 30px;
   }
 
@@ -309,7 +309,7 @@ const selectTab = (id: string): void => {
   }
 
   &__tab {
-    font-size: clamp(10px, 1vw, 14px);
+    font-size: 14px;
     background: transparent;
     appearance: none;
     color: $color-gray;
@@ -325,6 +325,10 @@ const selectTab = (id: string): void => {
       @media (max-width: 1599px) {
         font-size: 11px;
       }
+
+    @media (max-width: 479px) {
+      font-size: 16px;
+    }
 
     &--active {
       color: $color-white;
@@ -415,10 +419,6 @@ const selectTab = (id: string): void => {
     font-weight: 500;
     line-height: 1.3;
     white-space: pre-line;
-
-    @media (max-width: 639px) {
-      font-size: 15px;
-    }
   }
 
   &__teacher {
@@ -430,19 +430,11 @@ const selectTab = (id: string): void => {
 
   &__teacher-label {
     color: $color-gray;
-
-    @media (max-width: 639px) {
-      font-size: 13px;
-    }
   }
 
   &__teacher-name {
     font-weight: 500;
     font-size: 18px;
-
-    @media (max-width: 639px) {
-      font-size: 15px;
-    }
   }
 
   &__description {
@@ -451,7 +443,7 @@ const selectTab = (id: string): void => {
     line-height: 1.6;
 
     @media (max-width: 639px) {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     @media (max-width: 479px) {

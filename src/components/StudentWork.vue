@@ -183,7 +183,7 @@ const works: StudentWorkItem[] = [
     line-height: 1.3;
 
     @media (max-width: 639px) {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 
@@ -210,6 +210,7 @@ const works: StudentWorkItem[] = [
 
     @media (max-width: 479px) {
       max-width: 100%;
+      font-size: 14px;
     }
   }
 
@@ -263,6 +264,10 @@ const works: StudentWorkItem[] = [
           line-height: 1.2;
           font-size: 11px;
         }
+
+        @media (max-width: 479px) {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -284,6 +289,7 @@ const works: StudentWorkItem[] = [
   &__ps {
     grid-column: 2;
     line-height: 1.5;
+    font-weight: 500;
     font-size: 14px;
 
     @media (max-width: 1199px) {

@@ -285,7 +285,7 @@ const headlineStyle = (index: number) => {
   @media (max-width: 500px) {
     --zoom-width: 1.15;
     --card-top: 160px;
-    --fade-window: 300px;
+    --fade-window: 100%;
   }
 
   @media (max-height: 969px) {
@@ -499,9 +499,9 @@ const headlineStyle = (index: number) => {
   }
 
   &__card-photo {
-    max-width: 300px;
+    max-width: 350px;
     width: 100%;
-    height: 300px;
+    height: 350px;
 
     img {
       width: 100%;
